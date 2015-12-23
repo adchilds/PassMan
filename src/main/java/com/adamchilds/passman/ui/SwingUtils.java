@@ -30,6 +30,16 @@ public class SwingUtils {
     }
 
     /**
+     *
+     * @param width
+     * @param height
+     * @return
+     */
+    public static Component createBox(int width, int height) {
+        return Box.createRigidArea(new Dimension(width, height));
+    }
+
+    /**
      * Creates a new instance of a {@link RoundedBorder}, useful for adding a radius to {@link Component}s that support
      * {@link Border}s.
      *

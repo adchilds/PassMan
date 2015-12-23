@@ -2,6 +2,7 @@ package com.adamchilds.passman;
 
 import com.adamchilds.passman.authentication.model.PassManUser;
 import com.adamchilds.passman.ui.MainFrame;
+import com.adamchilds.passman.ui.panel.LoginPanel;
 
 /**
  *
@@ -27,7 +28,15 @@ public class AppController {
     private void createAndShowGUI() {
         frame = new MainFrame();
 
-        frame.showLoginScreen();
+        frame.displayPanel(
+                new LoginPanel(
+                        frame,
+                        PassManConstants.LOGIN_BORDER_TOP,
+                        PassManConstants.LOGIN_BORDER_LEFT,
+                        PassManConstants.LOGIN_PANEL_HEIGHT,
+                        PassManConstants.LOGIN_PANEL_WIDTH
+                )
+        );
 
         frame.setVisible(true);
     }
