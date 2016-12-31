@@ -1,5 +1,7 @@
 package com.github.adchilds.passman.authentication.model;
 
+import com.github.adchilds.passman.user.model.PassManUser;
+
 /**
  * Singleton instance of a simple authentication provider/manager. Handles maintaining the authenticated {@link
  * PassManUser}. Allows applications to maintain a single authenticated user at any time.

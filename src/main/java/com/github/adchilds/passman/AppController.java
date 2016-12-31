@@ -1,6 +1,6 @@
 package com.github.adchilds.passman;
 
-import com.github.adchilds.passman.authentication.model.PassManUser;
+import com.github.adchilds.passman.io.PassManIO;
 import com.github.adchilds.passman.ui.MainFrame;
 import com.github.adchilds.passman.ui.panel.LoginPanel;
 
@@ -15,8 +15,10 @@ public class AppController {
      *
      */
     public void initialize() {
-        // Create the secure file
-
+        // Create the PassMan settings file
+        if (!PassManIO.doesSettingsFileExist()) {
+            PassManIO.createSettingsFile();
+        }
 
         // Show the UI
         createAndShowGUI();
@@ -39,14 +41,6 @@ public class AppController {
         );
 
         frame.setVisible(true);
-    }
-
-    /**
-     *
-     * @param user
-     */
-    public void createUser(PassManUser user) {
-
     }
 
     /**

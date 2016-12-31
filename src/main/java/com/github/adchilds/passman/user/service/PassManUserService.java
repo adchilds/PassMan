@@ -1,6 +1,7 @@
-package com.github.adchilds.passman.authentication.service;
+package com.github.adchilds.passman.user.service;
 
-import com.github.adchilds.passman.authentication.model.PassManUser;
+import com.github.adchilds.passman.form.model.RegistrationForm;
+import com.github.adchilds.passman.user.model.PassManUser;
 
 /**
  *
@@ -23,6 +24,19 @@ public interface PassManUserService {
 
     /**
      *
+     * @param username
+     * @return
+     */
+    PassManUser getUserByUsername(String username);
+
+    /**
+     *
+     * @param form
+     */
+    void create(RegistrationForm form);
+
+    /**
+     *
      * @param user
      */
     void create(PassManUser user);
@@ -40,6 +54,13 @@ public interface PassManUserService {
      * @return
      */
     PassManUser read(PassManUser user);
+
+    /**
+     *
+     * @param emailAddress
+     * @return
+     */
+    PassManUser read(String emailAddress);
 
     /**
      *

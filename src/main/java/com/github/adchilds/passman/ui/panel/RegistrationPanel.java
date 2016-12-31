@@ -5,6 +5,8 @@ import com.github.adchilds.passman.ui.MainFrame;
 import com.github.adchilds.passman.ui.SwingUtils;
 import com.github.adchilds.passman.form.model.RegistrationForm;
 import com.github.adchilds.passman.form.validation.RegistrationFormValidator;
+import com.github.adchilds.passman.user.service.PassManUserService;
+import com.github.adchilds.passman.user.service.impl.PassManUserServiceImpl;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -18,6 +20,8 @@ import java.awt.event.KeyListener;
  *
  */
 public class RegistrationPanel extends PassManPanel implements ActionListener, KeyListener {
+
+    private PassManUserService userService = new PassManUserServiceImpl();
 
     private JLabel errorLabel;
     private JTextField usernameField;
@@ -140,10 +144,12 @@ public class RegistrationPanel extends PassManPanel implements ActionListener, K
                     // We initially didn't set the label's text. Set it now.
                     errorLabel.setText(validator.reason(form));
                 } else {
-                    // Create the new account
+                    // Valid; remove any existing error messages
                     System.out.println("Valid form fields.");
-
                     errorLabel.setText("");
+
+                    // Create the new account
+                    userService.create(form);
                 }
 
                 break;

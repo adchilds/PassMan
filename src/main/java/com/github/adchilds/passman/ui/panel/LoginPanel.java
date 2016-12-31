@@ -1,10 +1,10 @@
 package com.github.adchilds.passman.ui.panel;
 
 import com.github.adchilds.passman.PassManConstants;
-import com.github.adchilds.passman.authentication.service.PassManUserService;
-import com.github.adchilds.passman.authentication.service.impl.PassManUserServiceImpl;
 import com.github.adchilds.passman.ui.MainFrame;
 import com.github.adchilds.passman.ui.SwingUtils;
+import com.github.adchilds.passman.user.service.PassManUserService;
+import com.github.adchilds.passman.user.service.impl.PassManUserServiceImpl;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -19,6 +19,8 @@ import java.awt.event.KeyListener;
  */
 public class LoginPanel extends PassManPanel implements ActionListener, KeyListener {
 
+    private JLabel errorLabel;
+    private JPanel errorPanel;
     private JTextField usernameField;
     private JPasswordField passwordField;
     private PassManUserService userService;
@@ -39,7 +41,7 @@ public class LoginPanel extends PassManPanel implements ActionListener, KeyListe
      *
      */
     @Override
-    public void createPanel(){
+    public void createPanel() {
         setBorder(PassManConstants.PANEL_DEFAULT_BORDER);
         setBackground(PassManConstants.PANEL_DEFAULT_BACKGROUND_COLOR);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -79,6 +81,12 @@ public class LoginPanel extends PassManPanel implements ActionListener, KeyListe
         JPanel buttonPanel = SwingUtils.createTransparentJPanel(loginButton, registerButton);
         buttonPanel.setBorder(new EmptyBorder(15, 0, 0, 0));
 
+        // Prepare the error panel but don't show it yet
+        errorLabel = new JLabel();
+        errorPanel = SwingUtils.createTransparentJPanel(errorLabel, SwingUtils.createBox(50, 10));
+        errorPanel.setVisible(false);
+
+        add(errorPanel);
         add(usernamePanel);
         add(passwordPanel);
         add(buttonPanel);
@@ -97,11 +105,11 @@ public class LoginPanel extends PassManPanel implements ActionListener, KeyListe
                 char[] password = passwordField.getPassword();
 
                 boolean success = userService.authenticate(username, password);
-
                 if (success) {
-
+                    System.out.println("Successful authentication.");
                 } else {
-
+                    errorLabel.setText("Invalid username or password.");
+                    errorPanel.setVisible(true);
                 }
 
                 break;

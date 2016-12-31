@@ -1,4 +1,4 @@
-package com.github.adchilds.passman.authentication.model;
+package com.github.adchilds.passman.user.model;
 
 import com.github.adchilds.passman.io.PassManIO;
 
@@ -11,10 +11,12 @@ public class PassManUser {
 
     private Long id;
     private String username;
-    private char[] password;
+    private char[] password; // Hashed
     private String emailAddress;
+    private String secretPhrase; // Hashed
     private Date createdDate;
     private Date lastLoginDate;
+    private Credentials[] credentials;
 
     /**
      * Creates a new {@link PassManUser} with the given {@code username} and {@code password}.
