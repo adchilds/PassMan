@@ -47,6 +47,29 @@ public class PassManUserServiceImpl implements PassManUserService {
      * {@inheritDoc}
      */
     @Override
+    public boolean exists(String emailAddress) {
+        if (emailAddress == null || emailAddress.trim().isEmpty()) {
+            return false;
+        }
+
+        PassManSettings settings = settingsService.getCurrentSettings();
+        PassManUser[] users = settings.getUsers();
+
+        // Find the user that is attempted to login
+        // TODO: Binary search? Maybe not enough users to worry about
+        for (PassManUser user : users) {
+            if (emailAddress.equals(user.getEmailAddress())) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public PassManUser getUserByUsername(String username) {
         if (username == null || username.trim().isEmpty()) {
             return null;
@@ -76,6 +99,7 @@ public class PassManUserServiceImpl implements PassManUserService {
         user.setEmailAddress(form.getEmailAddress());
         user.setUsername(form.getEmailAddress());
         user.setPassword(form.getPassword());
+        user.setSecretPhrase(form.getSecretPhrase());
         user.setCreatedDate(new Date());
 
         PassManSettings settings = settingsService.getCurrentSettings();

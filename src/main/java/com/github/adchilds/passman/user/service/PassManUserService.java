@@ -24,6 +24,13 @@ public interface PassManUserService {
 
     /**
      *
+     * @param emailAddress
+     * @return
+     */
+    boolean exists(String emailAddress);
+
+    /**
+     *
      * @param username
      * @return
      */
