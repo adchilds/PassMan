@@ -3,11 +3,19 @@ package com.github.adchilds.passman.form.validation;
 import com.github.adchilds.passman.form.model.AbstractForm;
 import com.github.adchilds.passman.form.model.RegistrationForm;
 import com.github.adchilds.passman.form.validation.util.ValidationUtils;
+import com.github.adchilds.passman.user.service.PassManUserService;
+import com.github.adchilds.passman.user.service.impl.PassManUserServiceImpl;
 
 /**
  *
  */
 public class RegistrationFormValidator implements PassManValidator {
+
+    private PassManUserService userService;
+
+    public RegistrationFormValidator() {
+        userService = new PassManUserServiceImpl();
+    }
 
     /**
      * {@inheritDoc}
@@ -40,6 +48,8 @@ public class RegistrationFormValidator implements PassManValidator {
 
         if (!ValidationUtils.isEmail(registrationForm.getEmailAddress())) {
             return false;
+        } else if (userService.exists(registrationForm.getEmailAddress())) {
+            return false;
         }
 
         return true;
@@ -56,6 +66,8 @@ public class RegistrationFormValidator implements PassManValidator {
             return "Email address is missing.";
         } else if (!ValidationUtils.isEmail(registrationForm.getEmailAddress())) {
             return "Invalid email address.";
+        } else if (userService.exists(registrationForm.getEmailAddress())) {
+            return "Email address already in use.";
         } else if (ValidationUtils.isEmpty(registrationForm.getPassword())) {
             return "Password is missing.";
         } else if (ValidationUtils.isEmpty(registrationForm.getPasswordConfirmation())) {

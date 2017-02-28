@@ -68,6 +68,14 @@ public class PassManUser {
         this.emailAddress = emailAddress;
     }
 
+    public String getSecretPhrase() {
+        return secretPhrase;
+    }
+
+    public void setSecretPhrase(String secretPhrase) {
+        this.secretPhrase = secretPhrase;
+    }
+
     public Date getCreatedDate() {
         return createdDate;
     }
