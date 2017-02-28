@@ -24,6 +24,11 @@ public class PassManConstants {
     public static final Color PANEL_DEFAULT_BACKGROUND_COLOR = new Color(200, 200, 200);
 
     /*
+     * Label defaults
+     */
+    public static final Color LABEL_DEFAULT_COLOR_ERROR = new Color(255, 0, 0);
+
+    /*
      * Login
      */
     public static final int LOGIN_BORDER_TOP = 235;

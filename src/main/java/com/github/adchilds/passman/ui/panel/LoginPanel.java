@@ -1,10 +1,10 @@
 package com.github.adchilds.passman.ui.panel;
 
-import com.github.adchilds.passman.PassManConstants;
 import com.github.adchilds.passman.ui.MainFrame;
 import com.github.adchilds.passman.ui.SwingUtils;
 import com.github.adchilds.passman.user.service.PassManUserService;
 import com.github.adchilds.passman.user.service.impl.PassManUserServiceImpl;
+import com.github.adchilds.passman.util.PassManConstants;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -109,6 +109,7 @@ public class LoginPanel extends PassManPanel implements ActionListener, KeyListe
                     System.out.println("Successful authentication.");
                 } else {
                     errorLabel.setText("Invalid username or password.");
+                    errorLabel.setForeground(PassManConstants.LABEL_DEFAULT_COLOR_ERROR);
                     errorPanel.setVisible(true);
                 }
 
