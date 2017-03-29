@@ -1,7 +1,7 @@
 package com.github.adchilds.passman.ui;
 
-import com.github.adchilds.passman.PassManConstants;
 import com.github.adchilds.passman.ui.panel.PassManPanel;
+import com.github.adchilds.passman.util.PassManConstants;
 
 import javax.swing.*;
 import java.awt.*;

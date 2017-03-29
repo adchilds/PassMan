@@ -46,6 +46,9 @@ public class PassManConstants {
     public static final int REG_PANEL_WIDTH = 250;
     public static final int REG_PANEL_HEIGHT = 275;
 
+    /*
+     * Commands (event-listening)
+     */
     public static final String COMMAND_SIGN_IN = "command_signin";
     public static final String COMMAND_REGISTER_SUBMIT = "command_register_submit";
     public static final String COMMAND_REGISTER_CANCEL = "command_register_cancel";
@@ -53,8 +56,9 @@ public class PassManConstants {
     /*
      * File IO
      */
-    public static final String DEFAULT_FILE_LOCATION_UNIX = "/usr/local/PassMan/";
-    public static final String DEFAULT_FILE_LOCATION_WIN = "C:\\Documents\\PassMan\\";
+    public static final String USER_HOME = System.getProperty("user.home");
+    public static final String DEFAULT_FILE_LOCATION_UNIX = USER_HOME + "/.passman/";
+    public static final String DEFAULT_FILE_LOCATION_WIN = USER_HOME + "\\.passman\\";
     public static final String SETTINGS_FILE_NAME = "settings.passman";
 
     /*

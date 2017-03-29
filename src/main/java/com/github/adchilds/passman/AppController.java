@@ -3,6 +3,7 @@ package com.github.adchilds.passman;
 import com.github.adchilds.passman.io.PassManIO;
 import com.github.adchilds.passman.ui.MainFrame;
 import com.github.adchilds.passman.ui.panel.LoginPanel;
+import com.github.adchilds.passman.util.PassManConstants;
 
 /**
  *

@@ -12,6 +12,7 @@ public class PassManSettings implements Serializable {
 
     private String randomSalt;
     private Date programFirstOpenDate;
+    private Date programLastOpenDate;
     private PassManUser[] users;
 
     public String getRandomSalt() {
@@ -28,6 +29,14 @@ public class PassManSettings implements Serializable {
 
     public void setProgramFirstOpenDate(Date programFirstOpenDate) {
         this.programFirstOpenDate = programFirstOpenDate;
+    }
+
+    public Date getProgramLastOpenDate() {
+        return programLastOpenDate;
+    }
+
+    public void setProgramLastOpenDate(Date programLastOpenDate) {
+        this.programLastOpenDate = programLastOpenDate;
     }
 
     public PassManUser[] getUsers() {

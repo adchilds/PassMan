@@ -1,12 +1,12 @@
 package com.github.adchilds.passman.ui.panel;
 
-import com.github.adchilds.passman.PassManConstants;
 import com.github.adchilds.passman.ui.MainFrame;
 import com.github.adchilds.passman.ui.SwingUtils;
 import com.github.adchilds.passman.form.model.RegistrationForm;
 import com.github.adchilds.passman.form.validation.RegistrationFormValidator;
 import com.github.adchilds.passman.user.service.PassManUserService;
 import com.github.adchilds.passman.user.service.impl.PassManUserServiceImpl;
+import com.github.adchilds.passman.util.PassManConstants;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
